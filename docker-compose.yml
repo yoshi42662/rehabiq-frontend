@@ -1,0 +1,15 @@
+services:
+  frontend:
+    build: .
+    container_name: rehabiq-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: yarn run dev
+    environment:
+      - NODE_ENV=development
+      # - NEXT_PUBLIC_OPENAI_API_KEY=${NEXT_PUBLIC_OPENAI_API_KEY} # .envファイルと連動
+    env_file:
+      - .env.local
